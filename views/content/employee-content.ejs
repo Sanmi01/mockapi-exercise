@@ -1,0 +1,195 @@
+<!--EMPLOYEE VIEW STARTS HERE -->
+<!--complete logic for employee view-->
+<% if (title == 'Create Employee') { %>
+    <div class="col-sm-8">    
+        <div class="jumbotron">
+            <form action="" method="post">
+              Employee First Name:<br>
+              <input type="text" name="first_name" value="Employee First Name">
+              <br><br>
+              Employee Last Name:<br>
+              <input type="text" name="last_name" value="Employee Last Name">
+              <br><br>
+               Employee Email Address:<br>
+              <input type="email" name="email" value="hello@manifest.com">
+              <br><br>
+              <input type="submit" value="Create Employee">
+            </form>
+        </div>
+    </div>
+<% } else if (title == 'Delete Employee') { %>
+     
+<% } else if (title == 'Update Employee') { %>
+    <div class="col-sm-8">    
+        <div class="jumbotron">
+            <form action="/blog/employee/<%= employee.id %>/update" method="post">
+               Employee First Name:<br>
+              <input type="text" name="first_name" value="<%= employee.first_name %>">
+              <br><br>
+              Employee Last Name:<br>
+              <input type="text" name="last_name" value="<%= employee.last_name %>">
+              <br><br>
+               Employee Email Address:<br>
+              <input type="email" name="email" value="<%= employee.email %>">
+              <br><br>
+              <input type="submit" value="Update Employee">
+            </form>
+        </div>
+    </div>
+<% } else if (title == 'Employee Details') { %>
+    <div class="col-sm-8">    
+        <div class="">
+             <h1>Details of a Single employee - <%= employee.first_name %> <%= employee.last_name %> </h1>
+             <p>I am an employee for this ID = <%= employee.id %></p>
+             <p>Employee First Name: <%= employee.first_name %></p>
+             <p>Employee Last Name:  <%= employee.last_name %></p>
+             <p>Employee Gender:  <%= employee.gender %></p>
+             <p>Employee Email Address:  <%= employee.email %></p>
+             <p>Employee Mobile Number:  <%= employee.mobile_number %></p>
+             <p>Employee Home Address:  <%= employee.home_address_line %></p>
+             <p>Employee Salary:  <%= employee.salary %></p>
+             <p>Employee Employment Date:  <%= employee.joined_comapny_at %></p>
+             <a href="/blog/employee/<%= employee.id %>/update">Edit  Employee</a> | <a href="/blog/employee/<%= employee.id %>/delete">Delete Employee</a>
+        
+        </div>
+              
+    </div>
+<% } else if (title == 'Employee List') { %>
+    <div class="col-sm-8">    
+        <div class="">
+            <h1>Employees</h1>
+        <ol>
+        <% employees.forEach(function(employee) { %>
+                <li>
+                    <h4><a href="/blog/employee/<%= employee.id %>"><%= employee.first_name %></a></h4>
+                    <p>Employee First Name: <%= employee.first_name %></p>
+             <p>Employee Last Name:  <%= employee.last_name %></p>
+             <p>Employee Gender:  <%= employee.gender %></p>
+             <p>Employee Email Address:  <%= employee.email %></p>
+             <p>Employee Mobile Number:  <%= employee.mobile_number %></p>
+             <p>Employee Home Address:  <%= employee.home_address_line %></p>
+             <p>Employee Salary:  $<%= employee.salary %></p>
+             <p>Employee Employment Date:  <%= employee.joined_comapny_at %></p>
+                       <a href="/blog/employee/<%= employee.id %>/">View Employee</a>
+                </li>
+            <br/>
+        <% }); %>
+        </ol>
+    </div>
+    <div class="">
+        <h1><%= gender[0] %> Employees</h1>
+        <ol>
+        <% employees.forEach(function(employee) { %>
+            <% if (employee.gender == gender[0]) { %>
+                <li>
+                    <h4><a href="/blog/employee/<%= employee.id %>"><%= employee.first_name %></a></h4>
+                    <p>Employee First Name: <%= employee.first_name %></p>
+             <p>Employee Last Name:  <%= employee.last_name %></p>
+             <p>Employee Gender:  <%= employee.gender %></p>
+             <p>Employee Email Address:  <%= employee.email %></p>
+             <p>Employee Mobile Number:  <%= employee.mobile_number %></p>
+             <p>Employee Home Address:  <%= employee.home_address_line %></p>
+             <p>Employee Salary:  $<%= employee.salary %></p>
+             <p>Employee Employment Date:  <%= employee.joined_comapny_at %></p>
+                       <a href="/blog/employee/<%= employee.id %>/">View Employee</a>
+                </li>
+                <% } else { %>
+
+                    <% } %>
+            <br/>
+        <% }); %>
+        </ol>
+    </div>
+    <div class="">
+        <h1><%= gender[1] %> Employees</h1>
+        <ol>
+        <% employees.forEach(function(employee) { %>
+            <% if (employee.gender == gender[1]) { %>
+                <li>
+                    <h4><a href="/blog/employee/<%= employee.id %>"><%= employee.first_name %></a></h4>
+                    <p>Employee First Name: <%= employee.first_name %></p>
+             <p>Employee Last Name:  <%= employee.last_name %></p>
+             <p>Employee Gender:  <%= employee.gender %></p>
+             <p>Employee Email Address:  <%= employee.email %></p>
+             <p>Employee Mobile Number:  <%= employee.mobile_number %></p>
+             <p>Employee Home Address:  <%= employee.home_address_line %></p>
+             <p>Employee Salary:  $<%= employee.salary %></p>
+             <p>Employee Employment Date:  <%= employee.joined_comapny_at %></p>
+                       <a href="/blog/employee/<%= employee.id %>/">View Employee</a>
+                </li>
+                <% } else { %>
+
+                    <% } %>
+            <br/>
+        <% }); %>
+        </ol>
+    </div>
+    <div class="">
+        <h1> Employees that earn less than $2000</h1>
+        <ol>
+        <% employees.forEach(function(employee) { %>
+            <% if (employee.salary < 2000) { %>
+                <li>
+                    <h4><a href="/blog/employee/<%= employee.id %>"><%= employee.first_name %></a></h4>
+                    <p>Employee First Name: <%= employee.first_name %></p>
+             <p>Employee Last Name:  <%= employee.last_name %></p>
+             <p>Employee Gender:  <%= employee.gender %></p>
+             <p>Employee Email Address:  <%= employee.email %></p>
+             <p>Employee Mobile Number:  <%= employee.mobile_number %></p>
+             <p>Employee Home Address:  <%= employee.home_address_line %></p>
+             <p>Employee Salary:  $<%= employee.salary %></p>
+             <p>Employee Employment Date:  <%= employee.joined_comapny_at %></p>
+                       <a href="/blog/employee/<%= employee.id %>/">View Employee</a>
+                </li>
+                <% } else { %>
+
+                    <% } %>
+            <br/>
+        <% }); %>
+        </ol>
+    </div>
+    <div class="">
+        <h1> Employees that earn at least $2000</h1>
+        <ol>
+        <% employees.forEach(function(employee) { %>
+            <% if (employee.salary >= 2000) { %>
+                <li>
+                    <h4><a href="/blog/employee/<%= employee.id %>"><%= employee.first_name %></a></h4>
+                    <p>Employee First Name: <%= employee.first_name %></p>
+             <p>Employee Last Name:  <%= employee.last_name %></p>
+             <p>Employee Gender:  <%= employee.gender %></p>
+             <p>Employee Email Address:  <%= employee.email %></p>
+             <p>Employee Mobile Number:  <%= employee.mobile_number %></p>
+             <p>Employee Home Address:  <%= employee.home_address_line %></p>
+             <p>Employee Salary:  $<%= employee.salary %></p>
+             <p>Employee Employment Date:  <%= employee.joined_comapny_at %></p>
+                       <a href="/blog/employee/<%= employee.id %>/">View Employee</a>
+                </li>
+                <% } else { %>
+
+                    <% } %>
+            <br/>
+        <% }); %>
+        </ol>
+    </div>
+    </div>
+<% } else { %>
+
+<% } %>
+<!--EMPLOYEE VIEW END HERE-->
+<script>
+    function checkCat() {
+    var checkBoxes = document.getElementsByClassName( 'categoryCheckbox' );
+    var isChecked = false;
+    for (var i = 0; i < checkBoxes.length; i++) {
+        if ( checkBoxes[i].checked ) {
+            isChecked = true;
+        };
+    };
+    if ( isChecked ) {
+        
+        } else {
+            alert( 'Please, check at least one checkbox!' );
+        }   
+}
+</script>
